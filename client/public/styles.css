@@ -1,0 +1,115 @@
+* {
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+    font-family: "McLaren", cursive;
+    /* outline: 2px solid red; */
+
+  }
+
+  body {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(10,0,172,1) 0%, rgba(231,55,255,1) 35%, rgba(0,212,255,1) 100%);
+    font-weight: 400; 
+}
+
+
+label {
+    margin: 10px;
+}
+input {
+    margin: 10px;
+    width: 500px;
+    height: 20px;
+    border: 1px solid black;
+}
+
+.submit {
+    height: 40px;
+    width: 150px;
+    background-color: royalblue;
+}
+
+
+.th1 {
+    background-color: rgb(228, 224, 28);
+    width: 250px;
+    height: 35px;
+    border-radius: 0px 0px 10px 10px;
+}
+
+.th2 {
+    background-color: lightblue;
+    width: 250px;
+    height: 35px;
+    border-radius: 0px 0px 10px 10px;
+}
+
+.th3 {
+    background-color: mediumseagreen;
+    width: 250px;
+    height: 35px;
+    border-radius: 0px 0px 10px 10px;
+}
+
+.projbtn1 {
+    background-color: rgb(228, 224, 28);
+    padding: 2px;
+    margin: 2px;
+    width: 100px;
+}
+.projbtn2 {
+    background-color: lightblue;
+    width: 120px;
+    height: 30px;
+    margin: 5px;
+}
+.projbtn3 {
+    background-color: red;
+    width: 120px;
+    height: 30px;
+    margin: 5px;
+}
+
+table {
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+    width: 200px;
+    height: 600px;
+    overflow: scroll;
+
+}
+
+table, th, td {
+    border: 2px solid black;
+    margin: 10px;
+    padding: 10px;
+    width: 280px;
+}
+
+thead {
+    width: 100%;
+}
+
+tbody {
+    display: block;
+    overflow: auto;
+    height: 600px;
+    width: 100%;
+    }
+thead tr {
+    display: block;
+    }
+
+.addproj {
+    width: 200px;
+    height: 30px;
+    border-radius: 20px;
+    background-color: royalblue;
+    vertical-align: bottom;
+    margin-right: 750px;
+    margin-bottom: 15px;
+
+}
