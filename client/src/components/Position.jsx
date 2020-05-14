@@ -3,6 +3,7 @@ import { Link } from "@reach/router";
 import AddIcon from '@material-ui/icons/Add';
 import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
 import axios from 'axios';
+import Navbar from './Navbar';
 
 function Position() {
     const [projects, setProjects] = useState([])
@@ -34,7 +35,7 @@ function Position() {
 
     return (
         <div>
-            <h1>Project Manager</h1>
+         <Navbar />
             <table>
                 <thead>
                     <tr>
@@ -46,7 +47,7 @@ function Position() {
                         item.position[0] === true ?
                             <tr key={index}>
                                 <td>
-                                    <h2>{item.project}</h2><br /><h3>Due: {item.date.substring(0, 10)}</h3><br />
+                                    <p>{item.project}</p><br /><p>Due: {item.date.substring(0, 10)}</p><br />
                                     <button className="projbtn1" onClick={(e) => onProgressHandler(e, item)}><ArrowRightAltIcon /></button>
                                 </td>
                             </tr>
@@ -67,7 +68,7 @@ function Position() {
                         item.position[1] === true ?
                             <tr key={index}>
                                 <td>
-                                    <h2>{item.project}</h2><br /><h3>Due: {item.date.substring(0, 10)}</h3><br />
+                                    <p>{item.project}</p><br /><p>Due: {item.date.substring(0, 10)}</p><br />
                                     <button className="projbtn2" onClick={(e) => onCompleteHandler(e, item)}><ArrowRightAltIcon /></button>
                                 </td>
                             </tr>
@@ -87,7 +88,7 @@ function Position() {
                         item.position[2] === true ?
                             <tr key={index}>
                                 <td>
-                                    <h2>{item.project}</h2><br /><h3>Due: {item.date.substring(0, 10)}</h3><br />
+                                    <p>{item.project}</p><br /><p>Due: {item.date.substring(0, 10)}</p><br />
                                     <button className="projbtn3" onClick={() => onDeleteHandler(item)}><ArrowRightAltIcon /></button>
                                 </td>
                             </tr>
@@ -96,7 +97,7 @@ function Position() {
 
                 </tbody>
             </table>
-            <Link to="/"><button className="addproj"><AddIcon /></button></Link>
+            
         </div>
 
     )
