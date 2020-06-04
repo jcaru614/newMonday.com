@@ -1,6 +1,7 @@
 import express from 'express';
 import { Express } from 'express';
 import * as bodyParser from "body-parser";
+import cookieParser from "cookie-parser";
 import { Routes } from "../routes/routes";
 import mongoose from "mongoose";
 // import * as cors from "cors";
@@ -24,6 +25,7 @@ class App {
         // serving static files 
         this.app.use(express.static('public'));
         this.app.use(cors());
+        this.app.use(cookieParser());
     }
 
     private mongoSetup(): void {
