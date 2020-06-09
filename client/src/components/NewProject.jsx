@@ -17,7 +17,7 @@ function NewProject() {
         // if (localStorage.getItem('userId') === null) {
         //     navigate('/')
         // } else {
-        axios.get(`http://localhost:8000/readOne/5ed6daa56b49b82ac9522689`, { withCredentials: true })
+        axios.get(`http://localhost:8000/readOne/5ed6daa56b49b82ac9522689`)
             .then(res => {
                 console.log('projects', res)
                 setUserState(res.data)

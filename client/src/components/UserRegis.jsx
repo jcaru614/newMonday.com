@@ -21,7 +21,7 @@ function UserRegis(props) {
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8000/create', registerState, {withCredentials:true})
+        axios.post('http://localhost:8000/create', registerState)
             .then(res => {
                 if (res.data.errors) {
                     setErrorState({
