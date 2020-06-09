@@ -1,6 +1,6 @@
 import React from "react";
 import Nav from 'react-bootstrap/Nav';
-import { Link, navigate} from "@reach/router";
+import { Link } from "@reach/router";
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import AddIcon from '@material-ui/icons/Add';
 const Navbar = (props) => {
@@ -9,7 +9,7 @@ const Navbar = (props) => {
         <div>
             <Nav variant="tabs" defaultActiveKey="/home">
                 <Nav.Item>
-                    <Nav.Link href="/home"><Link to="position"><DashboardIcon/></Link></Nav.Link>
+                    <Nav.Link href="/home"><Link to="position"><DashboardIcon /></Link></Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
                     <Nav.Link eventKey="link-1"><Link to="/"><AddIcon /></Link></Nav.Link>

@@ -1,16 +1,17 @@
 import React from 'react';
-import {Router} from '@reach/router'
+import { Router } from '@reach/router'
 import NewProject from './components/NewProject';
 import Position from './components/Position';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import MainPage from './components/MainPage';
 
 function App() {
   return (
     <div>
       <Router>
-      
-        <NewProject path="/" />
-        <Position path="position" />
+        <MainPage path="/" />
+        <NewProject path="/addProject" />
+        <Position path="/position" />
       </Router>
     </div>
   );

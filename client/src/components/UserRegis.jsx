@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { navigate } from '@reach/router';
-import book from '../img/book.jpg'
-import privacy from '../img/privacy.jpg'
-import music from '../img/music.jpg'
 
 function UserRegis(props) {
     const [registerState, setRegisterState] = useState({
@@ -42,7 +39,7 @@ function UserRegis(props) {
                 } else {
                     localStorage.setItem('userId', res.data._id)
                     console.log('registration Succsesful');
-                    navigate('/dashboard')
+                    navigate('/addProject')
                 }
             })
             .catch(err => { console.log(err)
@@ -71,9 +68,6 @@ function UserRegis(props) {
                     <input type='password' name='confirmPassword' value={registerState.confirmPassword} onChange={onChangeHandler} />
                     <button className='regis-btn' type='submit'>Register</button>
                 </form>
-                <img className='regis-book' src={book} alt="book" />
-                <img className='regis-cook' src={privacy} alt="privacy" />
-                <img className='regis-music' src={music} alt="music" />
             </div>
 
         </div>

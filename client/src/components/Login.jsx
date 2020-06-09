@@ -19,7 +19,7 @@ function UserLogin(props) {
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8000/api/v1/login', loginState, { withCredentials: true })
+        axios.post('http://localhost:8000/login', loginState, { withCredentials: true })
             .then(res => {
                 // console.log('is this one?',res);
                 if (res.data.errors) {

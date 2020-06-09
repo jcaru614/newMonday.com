@@ -7,10 +7,20 @@ import mongoose from "mongoose";
 // import * as cors from "cors";
 import cors from "cors";
 
+
 class App {
+    public router = express.Router();
     public app: Express = express();
     public routePrv: Routes = new Routes();
     public mongoUrl = 'mongodb://localhost:27017/gira_DB';
+    public options:cors.CorsOptions = {
+        allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept", "X-Access-Token"],
+        credentials: true,
+        methods: "GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE",
+        origin: this.mongoUrl,
+        preflightContinue: false,
+    }
+
 
     constructor() {
         // this.app = express();
@@ -24,7 +34,9 @@ class App {
         this.app.use(bodyParser.urlencoded({ extended: false }));
         // serving static files 
         this.app.use(express.static('public'));
-        this.app.use(cors());
+        // this.app.use(cors());
+        this.app.use(cors({origin: 'http://localhost:3000'}));
+        this.router.options("*", cors(this.options));
         this.app.use(cookieParser());
     }
 

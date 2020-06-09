@@ -1,17 +1,33 @@
-import React, { useState } from 'react';
-import { Link, navigate } from "@reach/router";
-
+import React, { useState, useEffect } from 'react';
+import { navigate } from "@reach/router";
 import AddIcon from '@material-ui/icons/Add';
 import axios from 'axios';
 import Navbar from './Navbar'
 
 function NewProject() {
+    const [userState, setUserState] = useState({})
     const [formState, setFormState] = useState({
-        project: '',
+        title: '',
         date: ''
-    })
+    });
+    const [errorState, setErrorState] = useState('');
+    const [refreshState, setRefreshState] = useState(false);
 
-    const [errorState, setErrorState] = useState([])
+    useEffect(() => {
+        // if (localStorage.getItem('userId') === null) {
+        //     navigate('/')
+        // } else {
+        axios.get(`http://localhost:8000/readOne/5ed6daa56b49b82ac9522689`, { withCredentials: true })
+            .then(res => {
+                console.log('projects', res)
+                setUserState(res.data)
+            })
+            .catch(err => {
+                setUserState({})
+                setErrorState("Please login to dislay data")
+            })
+        // }
+    }, [refreshState])
 
     const onChangeHandler = (e) => {
         setFormState({ ...formState, [e.target.name]: e.target.value })
@@ -19,17 +35,20 @@ function NewProject() {
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8000/create', formState)
+        let temp = { ...userState };
+        console.log('temptemp', temp);
+        temp.projects.unshift(formState)
+        axios.patch(`http://localhost:8000/updateOne/5ed6daa56b49b82ac9522689`, temp, {withCredentials: true})
             .then(res => {
                 if (res.data.errors) {
                     setErrorState({
-                        project: res.data.errors.project ? res.data.errors.project.message : '',
+                        title: res.data.errors.title ? res.data.errors.title.message : '',
                         date: res.data.errors.date ? res.data.errors.date.message : ''
                     })
 
                 } else {
                     console.log("created project");
-                    navigate('/position')
+                    navigate('/addProject')
                 }
             })
             .catch(err => {
@@ -45,7 +64,7 @@ function NewProject() {
             <h2>Write a user story</h2>
             <form onSubmit={onSubmitHandler}>
                 <label>Project</label>
-                <input type="text" name="project" onChange={onChangeHandler} />
+                <input type="text" name="title" onChange={onChangeHandler} />
                 {errorState.project !== '' ? <p>{errorState.project}</p> : null}
                 <label>Due Date</label>
                 <input type="date" name="date" onChange={onChangeHandler} />

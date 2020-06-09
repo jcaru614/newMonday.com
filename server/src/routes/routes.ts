@@ -5,6 +5,7 @@ import ReadOne from '../services/readOne';
 import UpdateOne from '../services/updateOne';
 import DeleteOne from '../services/deleteOne';
 import UpdatePassword from '../services/updatePassword';
+import Login from '../services/login';
 
 export class Routes {
 
@@ -15,6 +16,7 @@ export class Routes {
     app.patch('/updateOne/:id', UpdateOne.updateOne);
     app.delete('/deleteOne/:id', DeleteOne.deleteOne);
     app.patch('/updatePassword/:id', UpdatePassword.updatePassword);
+    app.get('/login/:id', Login.login);
     // app.get('/test', (req, res): void => {
     //     console.log('here!!!!!')
     //     res.json({message:'hello world'})

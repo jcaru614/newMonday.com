@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import { Link } from "@reach/router";
-import AddIcon from '@material-ui/icons/Add';
+import React, { useEffect, useState } from 'react';
 import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
 import axios from 'axios';
 import Navbar from './Navbar';
