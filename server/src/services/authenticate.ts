@@ -7,7 +7,7 @@ const secret: string = "mysecret";
 class Authenticate {
     public authenticate = (req: Request, res: Response, next: any): void => {
         jwt.verify(req.cookies.usertoken, secret, (err: any, payload: any) => {
-            console.log(payload);
+            console.log("payload", payload);
             if (err) {
                 res.status(401).json({ verified: false });
             } else {
