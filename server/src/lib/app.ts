@@ -12,7 +12,7 @@ class App {
     public router = express.Router();
     public app: Express = express();
     public routePrv: Routes = new Routes();
-    public mongoUrl = 'mongodb://localhost:27017/gira_DB';
+    public mongoUrl = 'mongodb://localhost:27017/newMonday';
     public options:cors.CorsOptions = {
         allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept", "X-Access-Token"],
         credentials: true,
