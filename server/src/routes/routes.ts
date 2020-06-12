@@ -16,7 +16,7 @@ export class Routes {
     app.patch('/updateOne/:id', UpdateOne.updateOne);
     app.delete('/deleteOne/:id', DeleteOne.deleteOne);
     app.patch('/updatePassword/:id', UpdatePassword.updatePassword);
-    app.get('/login/:id', Login.login);
+    app.post('/login', Login.login);
     // app.get('/test', (req, res): void => {
     //     console.log('here!!!!!')
     //     res.json({message:'hello world'})

@@ -14,10 +14,10 @@ function NewProject() {
     const [refreshState, setRefreshState] = useState(false);
 
     useEffect(() => {
-        // if (localStorage.getItem('userId') === null) {
-        //     navigate('/')
-        // } else {
-        axios.get(`http://localhost:8000/readOne/5ed6daa56b49b82ac9522689`)
+        if (localStorage.getItem('userId') === null) {
+            navigate('/')
+        } else {
+        axios.get(`http://localhost:8000/readOne/${localStorage.getItem('userId')}`)
             .then(res => {
                 console.log('projects', res)
                 setUserState(res.data)
@@ -26,7 +26,7 @@ function NewProject() {
                 setUserState({})
                 setErrorState("Please login to dislay data")
             })
-        // }
+        }
     }, [refreshState])
 
     const onChangeHandler = (e) => {
@@ -38,7 +38,7 @@ function NewProject() {
         let temp = { ...userState };
         console.log('temptemp', temp);
         temp.projects.unshift(formState)
-        axios.patch(`http://localhost:8000/updateOne/5ed6daa56b49b82ac9522689`, temp, {withCredentials: true})
+        axios.patch(`http://localhost:8000/updateOne/${localStorage.getItem('userId')}`, temp)
             .then(res => {
                 if (res.data.errors) {
                     setErrorState({
