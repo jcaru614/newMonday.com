@@ -18,6 +18,7 @@ function Footer() {
         },
         p: {
             paddingTop:'10px',
+            
         }
 
     }
@@ -30,7 +31,7 @@ function Footer() {
             <img style={styles.logo} src={logo} alt="" />
             <p style={styles.p}>Copyright ⓒ {year}</p>
             <p >265 E 15th St. San Francisco, CA 35011, USA</p>
-        </footer>
+        </footer> 
     );
 }
 
