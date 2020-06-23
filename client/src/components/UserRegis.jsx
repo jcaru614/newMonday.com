@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { navigate } from '@reach/router';
+import Button from './Button';
 
 function UserRegis(props) {
 
@@ -48,62 +49,42 @@ function UserRegis(props) {
             })
     }
 
-    const styles = {
-        container: {
-            background: 'linear-gradient(162deg, rgba(249,187,148,1) 0%, rgba(231,113,125,1) 54%, rgba(171,85,120,1) 84%)',
-            padding: '50px 0',
-            // height: '100vh',
-        },
-        title: {
-            color: '#FFF'
-        },
-        input: {
-            width: '250px',
-            border: 'transparent',
-            height: '40px',
-            borderRadius: '10px',
-        },
-        btn: {
-            outside: {
-                margin: '20px 0'
-            },
-            inside: {
-                padding: '5px 20px',
-                fontSize: '20px',
-                borderRadius: '10px',
-                border: '2px solid #FFF',
-                background: 'transparent',
-                color: '#FFF'
-            }
-
-        }
-    }
 
     return (
-        <div className='register' id='register' style={styles.container}>
+        <div style={styles.container}>
             <h2 style={styles.title}>Register to start:</h2>
             <form onSubmit={onSubmitHandler}>
-                {/* <label>First Name:</label> */}
                 {errorState.firstName !== '' ? <p className='errors'>{errorState.firstName}</p> : null}
                 <input type='text' name='firstName' value={registerState.firstName} onChange={onChangeHandler} placeholder='First Name' style={styles.input} />
-                {/* <label>Last Name:</label> */}
                 {errorState.lastName !== '' ? <p className='errors'>{errorState.lastName}</p> : null}
                 <input type='text' name='lastName' value={registerState.lastName} onChange={onChangeHandler} placeholder='Last Name' style={styles.input} />
-                {/* <label>Email:</label> */}
                 {errorState.email !== '' ? <p className='errors'>{errorState.email}</p> : null}
                 <input type='email' name='email' value={registerState.email} onChange={onChangeHandler} placeholder='Email' style={styles.input} />
-                {/* <label>Password:</label> */}
                 {errorState.password !== '' ? <p className='errors'>{errorState.password}</p> : null}
                 <input type='password' name='password' value={registerState.password} onChange={onChangeHandler} placeholder='Password' style={styles.input} />
-                {/* <label>Confirm Password:</label> */}
                 {errorState.confirmPassword !== '' ? <p className='errors'>{errorState.confirmPassword}</p> : null}
                 <input type='password' name='confirmPassword' value={registerState.confirmPassword} onChange={onChangeHandler} placeholder='Confirm Password' style={styles.input} />
-                <div style={styles.btn.outside}>
-                    <button className='regis-btn' type='submit' style={styles.btn.inside}>Register</button>
-                </div>
+                <Button type='submit' title="Register" color='#FFF' backgroundColor='transparent' border="2px solid #FFF" />
             </form>
         </div>
     )
 }
 
 export default UserRegis;
+
+const styles = {
+    container: {
+        background: 'linear-gradient(162deg, rgba(249,187,148,1) 0%, rgba(231,113,125,1) 54%, rgba(171,85,120,1) 84%)',
+        padding: '100px 0px 50px 0px',
+        // height: '100vh',
+    },
+    title: {
+        color: '#FFF'
+    },
+    input: {
+        width: '250px',
+        border: 'transparent',
+        height: '40px',
+        borderRadius: '10px',
+    }
+}

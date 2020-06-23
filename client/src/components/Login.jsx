@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { navigate } from '@reach/router';
+import Button from './Button'
 
 function UserLogin(props) {
     const [loginState, setLoginState] = useState({
@@ -45,46 +46,17 @@ function UserLogin(props) {
             })
     }
 
-    const styles = {
-        container: {
-            padding: '50px 0',
-        },
-        title: {
-            color: '#E7717D',
-        },
-        input: {
-            width: '250px',
-            border: '2px solid #E7717D',
-            height: '40px',
-            borderRadius: '10px',
-            display: 'block',
-            margin: '20px 0',
-        },
-        btn: {
-            outside: {
-                margin: '20px 0'
-            },
-            inside: {
-                padding: '5px 20px',
-                fontSize: '20px',
-                borderRadius: '10px',
-                border: '2px solid #E7717D',
-                background: 'transparent',
-                color: '#E7717D'
-            }
 
-        }
-    }
 
     return (
-        <div className='login_form' id='login' style={styles.container}>
+        <div style={styles.container}>
             <h2 style={styles.title}>Login:</h2>
             <form onSubmit={onSubmitHandler}>
-                <input type='email' name='email' value={loginState.email} onChange={onChangeHandler} placeholder="Email" style={styles.input} />
-                <input type='password' name='password' value={loginState.password} onChange={onChangeHandler} placeholder="Password" style={styles.input} />
-                <div style={styles.btn.outside}>
-                    <button type='submit' style={styles.btn.inside}>Login</button>
+                <div>
+                    <input type='email' name='email' value={loginState.email} onChange={onChangeHandler} placeholder="Email" style={styles.input} />
                 </div>
+                <input type='password' name='password' value={loginState.password} onChange={onChangeHandler} placeholder="Password" style={styles.input} />
+                <Button type='submit' title="Login" color='white' backgroundColor='#E7717D' border="2px solid #E7717D" />
             </form>
             {errorState.email !== '' ? <p className='errors'>{errorState.email}</p> : null}
         </div>
@@ -92,3 +64,20 @@ function UserLogin(props) {
 }
 
 export default UserLogin;
+
+const styles = {
+    container: {
+        padding: '50px 0',
+    },
+    title: {
+        color: '#E7717D',
+    },
+    input: {
+        width: '250px',
+        border: '2px solid #E7717D',
+        height: '40px',
+        borderRadius: '10px',
+        // display: 'block',
+        margin: '20px 0',
+    }
+}

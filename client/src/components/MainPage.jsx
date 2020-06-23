@@ -2,6 +2,7 @@ import React from 'react';
 import UserRegis from './UserRegis';
 import UserLogin from './Login';
 import Navbar from './Navbar';
+import Footer from './Footer';
 
 function MainPage() {
 
@@ -16,6 +17,7 @@ function MainPage() {
             <Navbar />
             <UserRegis />
             <UserLogin />
+            <Footer />
         </div>
     );
 }

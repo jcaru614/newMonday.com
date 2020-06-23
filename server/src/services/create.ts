@@ -13,12 +13,10 @@ class Create {
                 if (userResult === null) {
                     UserDB.create(req.body)
                         .then((createResult: User): void => {
-                            console.log("got to create!lkh");
                             const newJWT: string = jwt.sign({ _id: createResult._id }, secret)
                             WebUtil.successResponse(res, createResult, Constants.ACCOUNT_CREATED, 200, newJWT)
                         }).catch((createError: any) => WebUtil.errorResponse(res, createError, Constants.SERVER_ERROR, 500));
                 } else {
-                    console.log('I got here again!');
                     // res.json({ msg: "Email already exists", flag: false })
                     WebUtil.response(res, Constants.ACCOUNT_EXISTS, 400);
                 }

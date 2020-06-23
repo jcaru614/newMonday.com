@@ -1,35 +1,57 @@
-import React from "react";
-import Nav from 'react-bootstrap/Nav';
-import { Link } from "@reach/router";
-import DashboardIcon from '@material-ui/icons/Dashboard';
-import AddIcon from '@material-ui/icons/Add';
+import React, { useState } from "react";
+import { CSSTransition } from "react-transition-group";
+import MenuIcon from '@material-ui/icons/Menu';
+import CloseIcon from '@material-ui/icons/Close';
+import logo from '../images/newMonday.png'
+import Media from 'react-media';
 
 const Navbar = (props) => {
 
-    const styles = {
-        container: {
-            background: '#FFF',
-            padding: '10px',
-        },
-        logo: {
-            padding: '10px',
-            
-        }
-    }
+    const [isNavVisible, setNavVisibility] = useState(false);
+
+    const toggleNav = () => {
+        setNavVisibility(!isNavVisible);
+    };
 
     return (
-        <div style={styles.container}>
-        <a style={styles.logo} href={props.link} target="blank">the new monday.com</a>
-            {/* <Nav variant="tabs" defaultActiveKey="/home">
-                <Nav.Item>
-                    <Nav.Link href="/home"><Link to="position"><DashboardIcon /></Link></Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                    <Nav.Link eventKey="link-1"><Link to="/"><AddIcon /></Link></Nav.Link>
-                </Nav.Item>
-            </Nav> */}
+        <div className="header">
+            <img src={logo} className="logo" alt="" />
+
+            <Media query="(max-width: 599px)" render={() =>
+                (
+                    <>
+                        <CSSTransition
+                            in={isNavVisible}
+                            timeout={350}
+                            classNames="Animation" unmountOnExit>
+                            <nav className="head">
+                                <a href="#1">Product</a>
+                                <a href="#2">Enterprise</a>
+                                <a href="#3">Pricing</a>
+                            </nav>
+                        </CSSTransition>
+                        <button onClick={toggleNav} className="Burger"> {isNavVisible ? <CloseIcon /> : <MenuIcon />} </button>
+                    </>
+                )}
+            />
+
+            <Media query="(min-width: 600px)" render={() =>
+                (
+                    <>
+                        <nav className="head">
+                            <a href="#1">Product</a>
+                            <a href="#2">Enterprise</a>
+                            <a href="#3">Pricing</a>
+                        </nav>
+                    </>
+                )}
+            />
+
+
+
         </div>
     );
 }
 
 export default Navbar;
+
