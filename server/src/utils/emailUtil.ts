@@ -11,15 +11,15 @@ class EmailUtil {
         this.transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user: '',
-                pass: ''
+                user: 'jcaruana614@gmail.com',
+                pass: 'Trijicon19!'
             }
         })
     }
 
     public send(data: any): void {
         const mailOptions: Mail.Options = {
-            from: '',
+            from: 'jcaruana614@gmail.com',
             to: data.email,
             subject: "Welcome to newMonday.com!",
             html: ` 
