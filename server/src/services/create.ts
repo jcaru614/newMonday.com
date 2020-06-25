@@ -3,6 +3,7 @@ import UserDB, { User } from '../models/model';
 import WebUtil from '../utils/webUtil';
 import * as Constants from '../utils/constants';
 import jwt from "jsonwebtoken";
+import EMAIL from '../utils/emailUtil';
 const secret: string = "mysecret";
 
 class Create {
@@ -14,6 +15,7 @@ class Create {
                     UserDB.create(req.body)
                         .then((createResult: User): void => {
                             const newJWT: string = jwt.sign({ _id: createResult._id }, secret)
+                            EMAIL.send(createResult) 
                             WebUtil.successResponse(res, createResult, Constants.ACCOUNT_CREATED, 200, newJWT)
                         }).catch((createError: any) => WebUtil.errorResponse(res, createError, Constants.SERVER_ERROR, 500));
                 } else {
@@ -27,9 +29,9 @@ class Create {
 export default new Create();
 
 // UserDB.create({
-//     firstName: "test1",
-//     lastName: "test1",
-//     email: "test1@test1.com",
+//     firstName: "test2",
+//     lastName: "test2",
+//     email: "test2@test2.com",
 //     password: "test1234567890",
 //     confirmPassword:"test1234567890"
 // })

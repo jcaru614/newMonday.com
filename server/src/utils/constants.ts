@@ -1,12 +1,11 @@
 //response messages
-export const ACCOUNT_EXISTS = 'An account with that email already exists. this msg';
+export const ACCOUNT_EXISTS = 'An account with that email already exists';
 export const NO_ACCOUNT_EXISTS = 'An account with that email does not exist';
-export const ACCOUNT_CREATED = 'Account created successfully! sucesssss';
+export const ACCOUNT_CREATED = 'Account created successfully!';
 export const ACCOUNT_DELETED = 'Account deleted successfully';
 export const INVALID_PASSWORD = 'password is not correct';
 export const LOGGED_OUT = 'User has logged out.';
 export const LOGGED_IN = 'User has logged in.';
-
 //client error response codes
 export const CLIENT_ERROR_UA = 'UNAUTHORIZED.';
 export const CLIENT_ERROR_A_NA = 'ACCOUNT NOT FOUND.';
