@@ -1,5 +1,5 @@
 import React from 'react';
-import UserRegis from './UserRegis';
+import UserRegis from './Registration';
 import UserLogin from './Login';
 import Navbar from './Navbar';
 import Footer from './Footer';

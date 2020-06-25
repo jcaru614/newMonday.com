@@ -35,8 +35,8 @@ function UserLogin(props) {
                     })
 
                 } else {
-                    localStorage.setItem('userId', res.data._id)
-                    console.log(localStorage.getItem('userId'));
+                    localStorage.setItem('user_id', res.data._id)
+                    console.log(localStorage.getItem('user_id'));
                     console.log('login succsesful');
                     navigate('/addProject')
                 }
@@ -78,6 +78,6 @@ const styles = {
         height: '40px',
         borderRadius: '10px',
         // display: 'block',
-        margin: '20px 0',
+        margin: '20px 0 0',
     }
 }

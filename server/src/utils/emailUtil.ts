@@ -12,7 +12,7 @@ class EmailUtil {
             service: 'gmail',
             auth: {
                 user: 'jcaruana614@gmail.com',
-                pass: 'Trijicon19!'
+                pass: ''
             }
         })
     }

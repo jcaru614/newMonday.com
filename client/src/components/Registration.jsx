@@ -3,7 +3,7 @@ import axios from 'axios';
 import { navigate } from '@reach/router';
 import Button from './Button';
 
-function UserRegis(props) {
+function Registration(props) {
 
     const [registerState, setRegisterState] = useState({
         firstName: '',
@@ -39,7 +39,8 @@ function UserRegis(props) {
                         email: 'A user with this email is already register.',
                     })
                 } else {
-                    localStorage.setItem('userId', res.data._id)
+                    localStorage.setItem('user_id', res.data._id)
+                    console.log(localStorage.getItem('user_id'));
                     console.log('registration Succsesful');
                     navigate('/addProject')
                 }
@@ -70,7 +71,7 @@ function UserRegis(props) {
     )
 }
 
-export default UserRegis;
+export default Registration;
 
 const styles = {
     container: {
