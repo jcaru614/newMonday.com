@@ -8,10 +8,12 @@ function Footer() {
             background: '#C2C9CF',
             textAlign: 'center',
             width: '100%',
-            height: '20%',
+            height: '130px',
             boxShadow: '0 0 5px 0 gray',
             color: 'black',
-            paddingTop: '10px'
+            paddingTop: '10px',
+            // position: 'fixed',
+            bottom: '0px'
         },
         logo: {
             width: '175px'

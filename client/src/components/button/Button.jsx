@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import './button.css';
 
 const Button = (props) => {
 
@@ -13,9 +14,9 @@ const Button = (props) => {
     }
 
     return (
-        <div>
+
         <button className="btn" style={btn}>{props.title}</button>
-        </div>
+
     )
 }
 

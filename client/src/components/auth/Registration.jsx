@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { navigate } from '@reach/router';
-import Button from './Button';
+import Button from '../button/Button';
 
 function Registration(props) {
 
@@ -40,6 +40,7 @@ function Registration(props) {
                     })
                 } else {
                     localStorage.setItem('user_id', res.data._id)
+                    console.log('herhehere', res)
                     console.log(localStorage.getItem('user_id'));
                     console.log('registration Succsesful');
                     navigate('/addProject')

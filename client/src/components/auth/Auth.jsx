@@ -1,25 +1,22 @@
 import React from 'react';
 import UserRegis from './Registration';
 import UserLogin from './Login';
-import Navbar from './Navbar';
-import Footer from './Footer';
 
-function MainPage() {
+
+function Auth() {
 
     const container = {
         background: 'transparent',
         // padding: '50px 0',
-        height: '100vh',
+        height: '100%',
     }
 
     return (
         <div style={container}>
-            <Navbar />
             <UserRegis />
             <UserLogin />
-            <Footer />
         </div>
     );
 }
 
-export default MainPage;
+export default Auth;

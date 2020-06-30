@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { CSSTransition } from "react-transition-group";
 import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
-import logo from '../images/newMonday.png'
+import './navbar.css'
+import logo from '../../images/newMonday.png'
 import Media from 'react-media';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { navigate } from '@reach/router';
@@ -34,9 +35,9 @@ const Navbar = (props) => {
                                 timeout={350}
                                 classNames="Animation" unmountOnExit>
                                 <nav className="head">
-                                    <a href="#1">Lorem Ipsum</a>
-                                    <a href="#2">Lorem Ipsum</a>
-                                    <a href="#3">Lorem Ipsum</a>
+                                    <a href="#1" onClick={()=> navigate('/addProject')}>Home</a>
+                                    <a href="#2" onClick={()=> navigate('/position')}>Projects</a>
+                                    <a href="#3">Notifications</a>
                                     <a href="#4">Profile</a>
                                     <a href="#5">Setting</a>
                                     <a onClick={logout} href="#6">Logout</a>
@@ -46,26 +47,26 @@ const Navbar = (props) => {
                         </>
                     )}
                 />
-
+{/* full width has different classnames */}
                 <Media query="(min-width: 600px)" render={() =>
                     (
                         <>
-                            <nav className="head">
-                                <a href="#1">Lorem Ipsum</a>
-                                <a href="#2">Lorem Ipsum</a>
-                                <a href="#3">Lorem Ipsum</a>
+                            <nav className="nav-links">
+                                <a href="#1" onClick={()=> navigate('/addProject')}>Home</a>
+                                <a href="#2" onClick={()=> navigate('/position')}>Projects</a>
+                                <a href="#3">Notifications</a>
                                 <>
                             <CSSTransition
                                 in={isNavVisible}
                                 timeout={350}
-                                classNames="Animation" unmountOnExit>
-                                <nav className="head">
+                                classNames="fw-animation" unmountOnExit>
+                                <nav className="fw-head">
                                     <a href="#1">Profile</a>
                                     <a href="#2">Setting</a>
                                     <a onClick={logout} href="#3">Logout</a>
                                 </nav>
                             </CSSTransition>
-                            <button onClick={toggleNav} className="Burger"> {isNavVisible ? <CloseIcon /> : <AccountCircleIcon  />} </button>
+                            <button onClick={toggleNav} className="fw-burger"> {isNavVisible ? <CloseIcon /> : <AccountCircleIcon  />} </button>
                         </>
                             </nav>
                         </>
