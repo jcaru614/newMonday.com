@@ -39,8 +39,7 @@ function Registration(props) {
                         email: 'A user with this email is already register.',
                     })
                 } else {
-                    localStorage.setItem('user_id', res.data._id)
-                    console.log('herhehere', res)
+                    localStorage.setItem('user_id', res.data.info._id)
                     console.log(localStorage.getItem('user_id'));
                     console.log('registration Succsesful');
                     navigate('/addProject')

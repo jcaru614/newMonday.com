@@ -65,7 +65,7 @@ function AddProject() {
             <form onSubmit={onSubmitHandler}>
                 <input style={styles.input} type="text" placeholder="Add a description..." name="title" onChange={onChangeHandler} />
                 {errorState.project !== '' ? <p>{errorState.project}</p> : null}
-                <input style={styles.input} classname='test' type="date" name="date" onChange={onChangeHandler} />
+                <input style={styles.input} className='test' type="date" name="date" onChange={onChangeHandler} />
                 {errorState.date !== '' ? <p>{errorState.date}</p> : null}
                 <Button type="submit" border="2px solid white" backgroundColor="transparent" title={<AddIcon />} ></Button>
             </form>

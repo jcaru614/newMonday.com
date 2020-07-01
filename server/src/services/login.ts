@@ -7,6 +7,24 @@ import * as Constants from '../utils/constants';
 import bcrypt from 'bcryptjs';
 import passport from 'passport';
 
+class Login {
+    public login = (req: any, res: any, next: any): void => {
+        passport.authenticate('local', function (err, user, info) {
+            if (err) { return next(err) }
+            if (!user) { return WebUtil.response(res, Constants.NO_ACCOUNT_EXISTS, 400) }
+            req.login(user, function (err: any) {
+                if (err) { return next(err) }
+                console.log('logged in', req.body.email);
+                console.log('USER HERE =>', user)
+                return WebUtil.successResponse(res, user, Constants.LOGGED_IN, 200)
+            });
+        })(req, res, next);
+    };
+}
+
+export default new Login();
+
+
 
 // class Login {
 //     public login = (req: Request, res: Response): void => {
@@ -34,19 +52,3 @@ import passport from 'passport';
 //     }
 // }
 
-class Login {
-    public login = (req: any, res: any, next: any): void => {
-        passport.authenticate('local', function (err, user, info) {
-            if (err) { return next(err) }
-            if (!user) { return WebUtil.response(res, Constants.NO_ACCOUNT_EXISTS, 400) }
-            req.login(user, function (err: any) {
-                if (err) { return next(err) }
-                console.log('logged in', req.body.email);
-                console.log('USER HERE =>', user)
-                return WebUtil.successResponse(res, user.email, Constants.LOGGED_IN, 200)
-            });
-        })(req, res, next);
-    };
-}
-
-export default new Login();

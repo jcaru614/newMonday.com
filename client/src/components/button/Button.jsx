@@ -14,9 +14,9 @@ const Button = (props) => {
     }
 
     return (
-
-        <button className="btn" style={btn}>{props.title}</button>
-
+        <div>
+            <button className="btn" style={btn}>{props.title}</button>
+        </div>
     )
 }
 

@@ -1,6 +1,7 @@
 import { Response } from 'express';
 import UserDB, { User } from '../models/model';
 import * as Constants from './constants';
+import { send } from 'process';
 
 class WebUtil {
 
@@ -10,7 +11,7 @@ class WebUtil {
 
     public successResponse(res: Response, data: any, code: string, status: number, headers?: any): void {
         console.log(data);
-        res.status(status).header(headers).json(code);
+        res.json({ info: data, code, status, headers })
     }
 
     public errorResponse(res: Response, err: any, code: string, status: number): void {

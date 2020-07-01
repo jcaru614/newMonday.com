@@ -22,27 +22,26 @@ function UserLogin(props) {
         e.preventDefault();
         axios.post('http://localhost:8000/login', loginState)
             .then(res => {
-                // console.log('is this one?',res);
+                console.log('res =>',res);
                 if (res.data.errors) {
                     setErrorState({
                         email: res.data.errors.email ? res.data.errors.email.message : '',
                         password: res.data.errors.password ? res.data.errors.password.message : '',
                     })
-                } else if (res.data.msg !== 'success') {
-                    console.log(res.data.msg)
+                } else if (res.status !== 200) {
+                    console.log('here =>',res)
                     setErrorState({
                         email: "This email doesn't exist or password is incorect",
                     })
 
                 } else {
-                    localStorage.setItem('user_id', res.data._id)
-                    console.log(localStorage.getItem('user_id'));
+                    localStorage.setItem('user_id', res.data.info._id)
                     console.log('login succsesful');
                     navigate('/addProject')
                 }
             })
             .catch(err => {
-                console.log(err);
+                console.log('thisone?',err);
             })
     }
 
