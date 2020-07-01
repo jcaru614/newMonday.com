@@ -4,20 +4,22 @@ import Columns from './Columns'
 import axios from 'axios';
 
 const Projects = () => {
-    const [usersProjects, setUsersProjects] = useState([])
-    console.log("usersprojects ", usersProjects)
+    const [user, setUser] = useState({})
     const [refreshState, setRefreshState] = useState(false)
+    const user_id = localStorage.getItem('user_id');
     // const allProjects = [];
     // const moreProjects = [];
     // console.log(moreProjects);
 
 
     useEffect(() => {
-        axios.get('http://localhost:8000/readOne/5ef3c660bce44114b7fbaed6')
-            .then(res => setUsersProjects(res.data.projects))
+        axios.get(`http://localhost:8000/readOne/${user_id}`)
+            .then(res => setUser(res.data))
             .catch(err => console.log(err))
     }, [refreshState])
 
+    console.log("usersprojects ", user)
+    console.log("user_id", user_id)
     // projects.forEach((test) => {
     //     allProjects.push(test.projects)
     // })
@@ -29,20 +31,46 @@ const Projects = () => {
     // }
 
     const onProgressHandler = (e, item) => {
-        console.log("our item", item);
-        axios.patch(`http://localhost:8000/updateOne/${item._id}`, { 'position': [false, true, false] })
+        let temp = { ...user };
+        if (item._id) {
+            for (let i = 0; i < temp.projects.length; i++) {
+                if (temp.projects[i]._id == item._id) {
+                    temp.projects[i].position = [false, true, false]
+                    break;
+                }
+            }
+        }
+        axios.patch(`http://localhost:8000/updateOne/${user_id}`, temp)
             .then(() => setRefreshState(!refreshState))
             .catch(err => console.log(err))
     }
 
     const onCompleteHandler = (e, item) => {
-        axios.patch(`http://localhost:8000/updateOne/${item._id}`, { 'position': [false, false, true] })
+        let temp = { ...user };
+        if (item._id) {
+            for (let i = 0; i < temp.projects.length; i++) {
+                if (temp.projects[i]._id == item._id) {
+                    temp.projects[i].position = [false, false, true]
+                    break;
+                }
+            }
+        }
+        axios.patch(`http://localhost:8000/updateOne/${user_id}`, temp)
             .then(() => setRefreshState(!refreshState))
             .catch(err => console.log(err))
     }
 
-    const onDeleteHandler = (item) => {
-        axios.delete(`http://localhost:8000/deleteOne/${item._id}`)
+    const onDeleteHandler = (e, item) => {
+        let temp = { ...user };
+        if (item._id) {
+            for (let i = 0; i < temp.projects.length; i++) {
+                if (temp.projects[i]._id == item._id) {
+                    temp.projects[i].position = [false, false, false]
+                    break;
+                }
+            }
+        }
+        axios.patch(`http://localhost:8000/updateOne/${user_id}`, temp)
             .then(() => setRefreshState(!refreshState))
             .catch(err => console.log(err))
     }
@@ -51,7 +79,7 @@ const Projects = () => {
         <div>
             <Columns title="Open" color="#E7717D"
                 position1={<tbody >
-                    {usersProjects.map((item, index) => (
+                    {user.projects ? user.projects.map((item, index) => (
                         item.position[0] === true ?
                             <tr key={index}>
                                 <td>
@@ -60,36 +88,36 @@ const Projects = () => {
                                 </td>
                             </tr>
                             : null
-                    ))}
+                    )) : null}
                 </tbody>}
             />
             <Columns title="In Progress" color="#AB5578"
-            position2={<tbody >
-                {usersProjects.map((item, index) => (
-                    item.position[1] === true ?
-                        <tr key={index}>
-                            <td>
-                                <p>{item.title}</p><br /><p>Due: {item.date.substring(0, 10)}</p><br />
-                                <button onClick={(e) => onCompleteHandler(e, item)}>To Complete</button>
-                            </td>
-                        </tr>
-                        : null
-                ))}
-            </tbody>}
+                position2={<tbody >
+                    {user.projects ? user.projects.map((item, index) => (
+                        item.position[1] === true ?
+                            <tr key={index}>
+                                <td>
+                                    <p>{item.title}</p><br /><p>Due: {item.date.substring(0, 10)}</p><br />
+                                    <button onClick={(e) => onCompleteHandler(e, item)}>To Complete</button>
+                                </td>
+                            </tr>
+                            : null
+                    )) : null}
+                </tbody>}
             />
             <Columns title="Complete" color="#AFD275"
-            position3={<tbody >
-                {usersProjects.map((item, index) => (
-                    item.position[2] === true ?
-                        <tr key={index}>
-                            <td>
-                                <p>{item.title}</p><br /><p>Due: {item.date.substring(0, 10)}</p><br />
-                                <button onClick={(e) => onDeleteHandler(e, item)}>To Delete</button>
-                            </td>
-                        </tr>
-                        : null
-                ))}
-            </tbody>}
+                position3={<tbody >
+                    {user.projects ? user.projects.map((item, index) => (
+                        item.position[2] === true ?
+                            <tr key={index}>
+                                <td>
+                                    <p>{item.title}</p><br /><p>Due: {item.date.substring(0, 10)}</p><br />
+                                    <button onClick={(e) => onDeleteHandler(e, item)}>To Delete</button>
+                                </td>
+                            </tr>
+                            : null
+                    )) : null}
+                </tbody>}
             />
         </div>
 

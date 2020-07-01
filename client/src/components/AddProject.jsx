@@ -11,36 +11,37 @@ function AddProject() {
         date: ''
     });
     const [errorState, setErrorState] = useState('');
-    // const [refreshState, setRefreshState] = useState(false);
-    console.log('local',localStorage.getItem('user_id'));
+    const [refreshState, setRefreshState] = useState(false);
+    const user_id = localStorage.getItem('user_id');
+
     useEffect(() => {
-        if (localStorage.getItem('user_id') === null) {
+        if (user_id === null) {
             navigate('/');
         } else {
-        axios.get(`http://localhost:8000/readOne/5ef3c660bce44114b7fbaed6`)
-        // 5efa3c32c32652053c485889
-            .then(res => {
-                console.log('projects', res);
-                setUserState(res.data);
-            })
-            .catch(err => {
-                console.log(err);
-                setUserState({});
-                setErrorState("Please login to dislay data");
-            })
+            axios.get(`http://localhost:8000/readOne/${user_id}`)
+                .then(res => {
+                    console.log('projects', res);
+                    setUserState(res.data);
+                })
+                .catch(err => {
+                    console.log(err);
+                    setUserState({});
+                    setErrorState("Please login to dislay data");
+                })
         }
-    }, [])
+    }, [refreshState])
 
+    console.log('userState', userState)
     const onChangeHandler = (e) => {
         setFormState({ ...formState, [e.target.name]: e.target.value })
     }
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        let temp = { ...userState };
+        let temp = {...userState};
         console.log('temptemp', temp);
         temp.projects.unshift(formState)
-        axios.patch(`http://localhost:8000/updateOne/5ef3c660bce44114b7fbaed6`, temp)
+        axios.patch(`http://localhost:8000/updateOne/${user_id}`, temp)
             .then(res => {
                 if (res.data.errors) {
                     setErrorState({
@@ -49,8 +50,9 @@ function AddProject() {
                     })
 
                 } else {
+                    setRefreshState(!refreshState)
                     console.log("created project");
-                    navigate('/addProject')
+                    navigate('/position')
                 }
             })
             .catch(err => {
