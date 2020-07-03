@@ -17,11 +17,10 @@ const Columns = (props) => {
                     <th style={title}>{props.title}</th>
                 </tr>
             </thead>
-            {/* <tbody> */}
-                {props.position1}
-                {props.position2}
-                {props.position3}
-            {/* </tbody> */}
+            {props.position1}
+            {props.position2}
+            {props.position3}
+            {props.position4}
         </table>
     )
 }
