@@ -5,21 +5,23 @@ import './projects.css'
 const Columns = (props) => {
 
     const title = {
-            backgroundColor: props.color,
-            width: '250px',
-            height: '35px',
+        backgroundColor: props.color,
+        width: '250px',
+        height: '35px',
     }
 
     return (
-        <table>
+        <table >
             <thead>
                 <tr>
                     <th style={title}>{props.title}</th>
                 </tr>
             </thead>
-            {props.position1}
-            {props.position2}
-            {props.position3}
+            {/* <tbody> */}
+                {props.position1}
+                {props.position2}
+                {props.position3}
+            {/* </tbody> */}
         </table>
     )
 }
