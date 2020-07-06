@@ -72,3 +72,6 @@ export default new Create();
 //     password: "test1234567890",
 //     confirmPassword:"test1234567890"
 // })
+
+var str = 'ee'
+    console.log(str.split('rr').join('tt'))
