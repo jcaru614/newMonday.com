@@ -28,3 +28,17 @@ tbody {
 thead tr {
     display: block;
     }
+
+
+.icon {
+    color: #E7717D;
+    margin: -10px 25px 10px 30px;
+    justify-self: end;
+    font-size: 40px;
+    border: none;
+    background: none;
+    outline: none;
+    z-index: 3;
+}
+
+    

@@ -43,7 +43,7 @@ const Navbar = (props) => {
                                     <a onClick={logout} href="#6">Logout</a>
                                 </nav>
                             </CSSTransition>
-                            <button onClick={toggleNav} className="Burger"> {isNavVisible ? <CloseIcon /> : <AccountCircleIcon  />} </button>
+                            <button onClick={toggleNav} className="Burger"> {isNavVisible ? <CloseIcon fontSize="large" /> : <AccountCircleIcon fontSize="large"  />} </button>
                         </>
                     )}
                 />
@@ -66,7 +66,7 @@ const Navbar = (props) => {
                                     <a onClick={logout} href="#3">Logout</a>
                                 </nav>
                             </CSSTransition>
-                            <button onClick={toggleNav} className="fw-burger"> {isNavVisible ? <CloseIcon /> : <AccountCircleIcon  />} </button>
+                            <button onClick={toggleNav} className="fw-burger"> {isNavVisible ? <CloseIcon fontSize="large" /> : <AccountCircleIcon fontSize="large" />} </button>
                         </>
                             </nav>
                         </>
@@ -89,7 +89,7 @@ const Navbar = (props) => {
                                     <a href="#3">Pricing</a>
                                 </nav>
                             </CSSTransition>
-                            <button onClick={toggleNav} className="Burger"> {isNavVisible ? <CloseIcon /> : <MenuIcon />} </button>
+                            <button onClick={toggleNav} className="Burger"> {isNavVisible ? <CloseIcon fontSize="large" /> : <MenuIcon fontSize="large" />} </button>
                         </>
                     )}
                 />
