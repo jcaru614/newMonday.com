@@ -34,3 +34,4 @@ export const DEFAULT_ERROR = {
         code: 'BAD GATEWAY.',
         message: 'DEFAULT ERROR RESPONSE.'
     };
+
