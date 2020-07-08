@@ -1,8 +1,8 @@
-# Create your spotback account
+# Create your newMonday.com  account
 
-**PROD-URL** : `/TBD/create`
+**PROD-URL** : `/TBD/updateOne/id`
 
-**DEV-URL** : `http://localhost:8000/create`
+**DEV-URL** : `http://localhost:8000/updateOne/id
 
 **Method** : `POST`
 

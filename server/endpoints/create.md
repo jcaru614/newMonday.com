@@ -1,4 +1,4 @@
-# Create your spotback account
+# Create your newMonday.com account
 
 **PROD-URL** : `/TBD/create`
 
