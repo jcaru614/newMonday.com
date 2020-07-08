@@ -11,6 +11,7 @@ const emailRegexChecker = (val: any): boolean => {
 
 export interface Project {
     title: string;
+    description: string;
     date: string;
     position: boolean[];
 }
@@ -37,6 +38,10 @@ export const UserSchema = new Schema({
         required: [true, "An email address is required."],
         validate: [emailRegexChecker, "Please enter a valid email address."]
     },
+    profilePic: {
+        type: String,
+        required: false,
+    },
     password: {
         type: String,
         required: [true, "A password is required"],
@@ -47,6 +52,14 @@ export const UserSchema = new Schema({
             title: {
                 type: String,
                 minlength: [3, 'Title name must be at least 3 characters long']
+            },
+            description: {
+                type: String,
+                minlength: [10, 'Description name must be at least 10 characters long']
+            },
+            image: {
+                type: String,
+                required: false
             },
             date: {
                 type: Date,
