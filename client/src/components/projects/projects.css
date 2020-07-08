@@ -4,12 +4,13 @@ table {
     /* vertical-align: top; */
     width: 200px;
     height: 600px;
-    overflow: scroll;   
+    overflow: scroll;
 }
 
-table, th, td {
-    border: 2px solid black;
-    margin: 10px;
+table,
+td,
+th {
+    margin: 5px;
     padding: 10px;
     width: 270px;
 }
@@ -17,18 +18,27 @@ table, th, td {
 thead {
     width: 100%;
     border-radius: 10px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: #fff;
 }
 
 tbody {
     display: block;
-    overflow: auto;
+    /* overflow: auto; */
     height: 600px;
     width: 100%;
-    }
-thead tr {
+}
+thead,
+tr {
     display: block;
-    }
+    /* width: 50%; */
+}
 
+.columnsContainer {
+    background-color: #FFFAFA;
+}
 
 .icon {
     color: #E7717D;
@@ -41,4 +51,32 @@ thead tr {
     z-index: 3;
 }
 
-    
+.completeItem,
+.openItem,
+.progessItem {
+    background-color: #FFF;
+    border-radius: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #D3D3D3;
+    box-shadow: 2px 2px #D3D3D3;
+    margin-bottom: 5px;
+}
+
+.openItem:hover, .progessItem:hover, .completeItem:hover {
+    border-color: none;
+    border-radius: 10px;
+    transition: all 200ms ease-out;
+}
+
+.openItem:hover {
+    box-shadow: 1px 3px 10px 5px #E7717D;
+}
+
+.progessItem:hover {
+    box-shadow: 1px 3px 10px 5px #AB5578;
+}
+
+.completeItem:hover {
+    box-shadow: 1px 3px 10px 5px #AFD275;
+}

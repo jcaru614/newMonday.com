@@ -11,6 +11,7 @@ const Projects = () => {
   const [user, setUser] = useState({});
   const [refreshState, setRefreshState] = useState(false);
   const user_id = localStorage.getItem("user_id");
+  // const [toggle, setToggle] = useState(false);
   useEffect(() => {
     axios.get(`http://localhost:8000/readOne/${user_id}`)
       .then((res) => setUser(res.data))
@@ -74,6 +75,7 @@ const Projects = () => {
 
   const onDragOver = (e) => {
     e.preventDefault();
+    
   }
   const onBegginingDrag = (e) => {
     positionHandler(itemState, [true, false, false], { ...user });
@@ -103,12 +105,23 @@ const Projects = () => {
       .catch((err) => console.log(err));
   };
 
+  const styles = {
+    open : {
+      backgroundColor: 'red',
+      border: '2px solid blue',
+    },
+    close : {
+      backgroundColor: 'green',
+      border: '2px solid pink',
+    }
+  }
+
   return (
-    <div>
+    <div className="columnsContainer">
       <Columns title="Open" color="#E7717D" position1={
         <tbody onDragOver={(e) => onDragOver(e)} onDrop={(e) => onBegginingDrag(e)}>
           {user.projects ? user.projects.map((item, index) => item.position[0] === true ? (
-            <tr key={item._id} draggable onDrag={(e) => itemHandler(e, item)} >
+            <tr className='openItem' key={item._id} draggable onDrag={(e) => itemHandler(e, item)} >
               <td>
                 <p>{item.title}</p>
                 <p>Due: {item.date.substring(0, 10)}</p>
@@ -124,7 +137,7 @@ const Projects = () => {
       <Columns title="In Progress" color="#AB5578" position2={
         <tbody onDragOver={(e) => onDragOver(e)} onDrop={(e) => onProgressDrag(e)}>
           {user.projects ? user.projects.map((item, index) => item.position[1] === true ? (
-            <tr key={item._id} draggable onDrag={(e) => itemHandler(e, item)} >
+            <tr className='progessItem' key={item._id} draggable onDrag={(e) => itemHandler(e, item)} >
               <td>
                 <p>{item.title}</p>
                 <p>Due: {item.date.substring(0, 10)}</p>
@@ -140,7 +153,7 @@ const Projects = () => {
       <Columns title="Complete" color="#AFD275" position3={
         <tbody onDragOver={(e) => onDragOver(e)} onDrop={(e) => onCompleteDrag(e)}>
           {user.projects ? user.projects.map((item, index) => item.position[2] === true ? (
-            <tr key={item._id} draggable onDrag={(e) => itemHandler(e, item)} >
+            <tr className='completeItem' key={item._id} draggable onDrag={(e) => itemHandler(e, item)} >
               <td>
                 <p>{item.title}</p>
                 <p>Due: {item.date.substring(0, 10)}</p>
