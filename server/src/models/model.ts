@@ -20,6 +20,7 @@ export interface User extends mongoose.Document {
     firstName: string;
     lastName: string;
     email: string;
+    profilePic: string;
     password: string;
     projects: Project[];
 }
