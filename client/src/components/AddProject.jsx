@@ -8,11 +8,14 @@ function AddProject() {
     const [userState, setUserState] = useState({})
     const [formState, setFormState] = useState({
         title: '',
-        date: ''
+        date: '',
+        description: '',
+        image: ''
     });
     const [errorState, setErrorState] = useState('');
     const [refreshState, setRefreshState] = useState(false);
     const user_id = localStorage.getItem('user_id');
+    console.log('locals', localStorage)
 
     useEffect(() => {
         if (user_id === null) {
@@ -65,9 +68,13 @@ function AddProject() {
         <div style={styles.container}>
             <h2>Write a user story</h2>
             <form onSubmit={onSubmitHandler}>
-                <input style={styles.input} type="text" placeholder="Add a description..." name="title" onChange={onChangeHandler} />
+                <input style={styles.input} type="text" placeholder="Add a title" name="title" onChange={onChangeHandler} />
                 {errorState.project !== '' ? <p>{errorState.project}</p> : null}
                 <input style={styles.input} className='test' type="date" name="date" onChange={onChangeHandler} />
+                {errorState.date !== '' ? <p>{errorState.date}</p> : null}
+                <input style={styles.input} className='test' type="text" placeholder="Add a description" name="description" onChange={onChangeHandler} />
+                {errorState.date !== '' ? <p>{errorState.date}</p> : null}
+                <input style={styles.input} className='test' type="url" placeholder="Add an optional image" name="image" onChange={onChangeHandler} />
                 {errorState.date !== '' ? <p>{errorState.date}</p> : null}
                 <Button type="submit" border="2px solid white" backgroundColor="transparent" title={<AddIcon />} ></Button>
             </form>

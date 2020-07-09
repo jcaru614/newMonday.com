@@ -40,6 +40,8 @@ function Registration(props) {
                     })
                 } else {
                     localStorage.setItem('user_id', res.data.info._id)
+                    localStorage.setItem('firstName', res.data.info.firstName)
+                    localStorage.setItem('lastName', res.data.info.lastName)
                     console.log(localStorage.getItem('user_id'));
                     console.log('registration Succsesful');
                     navigate('/addProject')

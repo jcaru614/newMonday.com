@@ -4,6 +4,7 @@ import Columns from "./Columns";
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import DeleteSweepIcon from '@material-ui/icons/DeleteSweep';
 import axios from "axios";
+import AspectRatioIcon from '@material-ui/icons/AspectRatio';
 
 
 
@@ -11,7 +12,7 @@ const Projects = () => {
   const [user, setUser] = useState({});
   const [refreshState, setRefreshState] = useState(false);
   const user_id = localStorage.getItem("user_id");
-  // const [toggle, setToggle] = useState(false);
+  
   useEffect(() => {
     axios.get(`http://localhost:8000/readOne/${user_id}`)
       .then((res) => setUser(res.data))
@@ -20,21 +21,6 @@ const Projects = () => {
 
   console.log("usersprojects ", user);
   console.log("user_id", user_id);
-
-  // const dragStart = e => {
-  //   const target = e.target;
-  //   e.dataTransfer.setData('card_id', target.id)
-  //   setTimeout(() => {
-  //     target.style.display = "none";
-  //   }, 0)
-  // }
-  // const drop = e => {
-  //   e.preventDefault();
-  //   const card_id = e.dataTransfer.getData('card_id')
-  //   const card = document.getElementById(card_id);
-  //   card.style.display = 'block';
-  //   e.target.appendChild(card)
-  // }
 
 
   const positionHandler = (item, arr, user) => {
@@ -105,16 +91,6 @@ const Projects = () => {
       .catch((err) => console.log(err));
   };
 
-  const styles = {
-    open : {
-      backgroundColor: 'red',
-      border: '2px solid blue',
-    },
-    close : {
-      backgroundColor: 'green',
-      border: '2px solid pink',
-    }
-  }
 
   return (
     <div className="columnsContainer">
@@ -125,6 +101,7 @@ const Projects = () => {
               <td>
                 <p>{item.title}</p>
                 <p>Due: {item.date.substring(0, 10)}</p>
+                <button className="icon" onClick={(e) => onProgressHandler(e, item)}> <AspectRatioIcon fontSize="large" /> </button>
                 <button className="icon" onClick={(e) => onProgressHandler(e, item)}> <ArrowForwardIcon fontSize="large" /> </button>
               </td>
             </tr>
@@ -141,6 +118,7 @@ const Projects = () => {
               <td>
                 <p>{item.title}</p>
                 <p>Due: {item.date.substring(0, 10)}</p>
+                <button className="icon" onClick={(e) => onProgressHandler(e, item)}> <AspectRatioIcon fontSize="large" /> </button>
                 <button className="icon" onClick={(e) => onCompleteHandler(e, item)}> <ArrowForwardIcon fontSize="large" /> </button>
               </td>
             </tr>
@@ -157,6 +135,7 @@ const Projects = () => {
               <td>
                 <p>{item.title}</p>
                 <p>Due: {item.date.substring(0, 10)}</p>
+                <button className="icon" onClick={(e) => onProgressHandler(e, item)}> <AspectRatioIcon fontSize="large" /> </button>
                 <button className="icon" onClick={(e) => onDeleteHandler(e, item)}> <DeleteSweepIcon fontSize="large" /> </button>
               </td>
             </tr>

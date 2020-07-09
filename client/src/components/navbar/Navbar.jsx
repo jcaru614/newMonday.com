@@ -7,9 +7,27 @@ import logo from '../../images/newMonday.png'
 import Media from 'react-media';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { navigate } from '@reach/router';
-
+import Avatar from '@material-ui/core/Avatar';
+import { makeStyles } from '@material-ui/core/styles';
+import { lightGreen, deepPurple } from '@material-ui/core/colors';
 const Navbar = (props) => {
 
+    const useStyles = makeStyles((theme) => ({
+        purple: {
+          color: theme.palette.getContrastText(deepPurple[500]),
+          backgroundColor: deepPurple[500],
+        },
+        green: {
+            color: theme.palette.getContrastText(lightGreen[500]),
+          backgroundColor:lightGreen[500],
+          },
+      }));
+      
+        const classes = useStyles();
+
+
+    const firstName = localStorage.getItem('firstName')
+    const lastName = localStorage.getItem('lastName')
     const [isNavVisible, setNavVisibility] = useState(false);
 
     const toggleNav = () => {
@@ -43,7 +61,8 @@ const Navbar = (props) => {
                                     <a onClick={logout} href="#6">Logout</a>
                                 </nav>
                             </CSSTransition>
-                            <button onClick={toggleNav} className="Burger"> {isNavVisible ? <CloseIcon fontSize="large" /> : <AccountCircleIcon fontSize="large"  />} </button>
+                            <button onClick={toggleNav} className="Burger"> 
+                            {isNavVisible ? <CloseIcon fontSize="large" /> : <AccountCircleIcon fontSize="large"  />} </button>
                         </>
                     )}
                 />
@@ -55,7 +74,7 @@ const Navbar = (props) => {
                                 <a href="#1" onClick={()=> navigate('/addProject')}>Home</a>
                                 <a href="#2" onClick={()=> navigate('/position')}>Projects</a>
                                 <a href="#3">Notifications</a>
-                                <>
+                           
                             <CSSTransition
                                 in={isNavVisible}
                                 timeout={350}
@@ -66,8 +85,9 @@ const Navbar = (props) => {
                                     <a onClick={logout} href="#3">Logout</a>
                                 </nav>
                             </CSSTransition>
-                            <button onClick={toggleNav} className="fw-burger"> {isNavVisible ? <CloseIcon fontSize="large" /> : <AccountCircleIcon fontSize="large" />} </button>
-                        </>
+                            <button  onClick={toggleNav} className="fw-burger"> 
+                            {isNavVisible ? <Avatar className={classes.green} ><CloseIcon fontSize="small" /></Avatar>  : <Avatar className={classes.purple}>{firstName[0]}{lastName[0]}</Avatar>} </button>
+              
                             </nav>
                         </>
                     )}
@@ -89,7 +109,8 @@ const Navbar = (props) => {
                                     <a href="#3">Pricing</a>
                                 </nav>
                             </CSSTransition>
-                            <button onClick={toggleNav} className="Burger"> {isNavVisible ? <CloseIcon fontSize="large" /> : <MenuIcon fontSize="large" />} </button>
+                            <button onClick={toggleNav} className="Burger"> 
+                            {isNavVisible ? <CloseIcon fontSize="large" /> : <MenuIcon fontSize="large" />} </button>
                         </>
                     )}
                 />
