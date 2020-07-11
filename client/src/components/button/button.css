@@ -2,7 +2,6 @@
 .btn {
     color: #fff;
     background: transparent;
-    cursor: pointer;
     box-shadow: inset 0 0 0 0 #AFD273;
 	-webkit-transition: all ease 0.7s;
 	-moz-transition: all ease 0.7s;

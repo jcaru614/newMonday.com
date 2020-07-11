@@ -70,7 +70,7 @@ const Navbar = (props) => {
                 <Media query="(min-width: 600px)" render={() =>
                     (
                         <>
-                            <nav className="nav-links">
+                            <nav className="head">
                                 <a href="#1" onClick={()=> navigate('/addProject')}>Home</a>
                                 <a href="#2" onClick={()=> navigate('/position')}>Projects</a>
                                 <a href="#3">Notifications</a>
@@ -94,7 +94,7 @@ const Navbar = (props) => {
                 />
                 </>
             :
-            
+        
             <>
                 <Media query="(max-width: 599px)" render={() =>
                     (

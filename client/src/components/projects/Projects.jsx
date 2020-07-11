@@ -5,6 +5,9 @@ import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import DeleteSweepIcon from '@material-ui/icons/DeleteSweep';
 import axios from "axios";
 import AspectRatioIcon from '@material-ui/icons/AspectRatio';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import Modal from './Modal'
+import { CSSTransition } from "react-transition-group";
 
 
 
@@ -12,7 +15,7 @@ const Projects = () => {
   const [user, setUser] = useState({});
   const [refreshState, setRefreshState] = useState(false);
   const user_id = localStorage.getItem("user_id");
-  
+
   useEffect(() => {
     axios.get(`http://localhost:8000/readOne/${user_id}`)
       .then((res) => setUser(res.data))
@@ -61,7 +64,7 @@ const Projects = () => {
 
   const onDragOver = (e) => {
     e.preventDefault();
-    
+
   }
   const onBegginingDrag = (e) => {
     positionHandler(itemState, [true, false, false], { ...user });
@@ -84,13 +87,13 @@ const Projects = () => {
       .catch((err) => console.log(err));
   };
 
-  const onDeleteDrag = (e) => {
-    positionHandler(itemState, [false, false, false], { ...user })
-    axios.patch(`http://localhost:8000/updateOne/${user_id}`, { ...user })
-      .then(() => setRefreshState(!refreshState))
-      .catch((err) => console.log(err));
-  };
 
+  const [isModalVis, setModalVis] = useState(false);
+
+  const toggleModal = (e, item) => {
+    setItemState(item)
+    setModalVis(!isModalVis);
+  };
 
   return (
     <div className="columnsContainer">
@@ -101,8 +104,8 @@ const Projects = () => {
               <td>
                 <p>{item.title}</p>
                 <p>Due: {item.date.substring(0, 10)}</p>
-                <button className="icon" onClick={(e) => onProgressHandler(e, item)}> <AspectRatioIcon fontSize="large" /> </button>
-                <button className="icon" onClick={(e) => onProgressHandler(e, item)}> <ArrowForwardIcon fontSize="large" /> </button>
+                <button className="icon" onClick={(e) => toggleModal(e, item)}> <AspectRatioIcon fontSize="large" /> </button>
+                <button className="iconNext" onClick={(e) => onProgressHandler(e, item)}> <ArrowForwardIcon fontSize="large" /> </button>
               </td>
             </tr>
           ) : null
@@ -118,8 +121,8 @@ const Projects = () => {
               <td>
                 <p>{item.title}</p>
                 <p>Due: {item.date.substring(0, 10)}</p>
-                <button className="icon" onClick={(e) => onProgressHandler(e, item)}> <AspectRatioIcon fontSize="large" /> </button>
-                <button className="icon" onClick={(e) => onCompleteHandler(e, item)}> <ArrowForwardIcon fontSize="large" /> </button>
+                <button className="icon" onClick={(e) => toggleModal(e, item)}> <AspectRatioIcon fontSize="large" /> </button>
+                <button className="iconNext" onClick={(e) => onCompleteHandler(e, item)}> <ArrowForwardIcon fontSize="large" /> </button>
               </td>
             </tr>
           ) : null
@@ -135,8 +138,8 @@ const Projects = () => {
               <td>
                 <p>{item.title}</p>
                 <p>Due: {item.date.substring(0, 10)}</p>
-                <button className="icon" onClick={(e) => onProgressHandler(e, item)}> <AspectRatioIcon fontSize="large" /> </button>
-                <button className="icon" onClick={(e) => onDeleteHandler(e, item)}> <DeleteSweepIcon fontSize="large" /> </button>
+                <button className="icon" onClick={(e) => toggleModal(e, item)}> <AspectRatioIcon fontSize="large" /> </button>
+                <button className="iconNext" onClick={(e) => onDeleteHandler(e, item)}> <DeleteSweepIcon fontSize="large" /> </button>
               </td>
             </tr>
           ) : null
@@ -145,6 +148,19 @@ const Projects = () => {
         </tbody>
       }
       />
+
+      <CSSTransition
+        in={isModalVis}
+        timeout={350}
+        classNames="modal-animation" unmountOnExit 
+      >
+        <Modal title={itemState.title} date={itemState.date} description={itemState.description} image={itemState.image} modalState={isModalVis}
+          btn={
+            <button className="exiticon" onClick={(e) => toggleModal(e, itemState)}> <ExitToAppIcon fontSize="large"/></button>
+          }
+        />
+      </CSSTransition>
+
 
     </div>
   );

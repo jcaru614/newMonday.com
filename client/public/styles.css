@@ -2,12 +2,47 @@
     margin: 0 auto;
     padding: 0;
     text-align: center;
+    font-family: "Montserrat", sans-serif;
     /* box-sizing: border-box; */
     /* outline: 2px solid red; */
-  }
-
-
-  html {
-    font-family: "Montserrat", sans-serif;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+body::-webkit-scrollbar {
+    width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+    background: rgb(240, 240, 240);
+}
+
+body::-webkit-scrollbar-thumb {
+    border: 2px solid white;
+    border-radius: 5px;
+    background: linear-gradient(51deg, #E7717D 20%, #AB5578 50%, #AFD275 75%);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+h1 {
+    text-align: center;
+    font-weight: 700;
+}
+h2 {
+    padding: 10px;
+    font-size: 25px;
+}
+p {
+    font-weight: 700;
+    color: black;
+}
