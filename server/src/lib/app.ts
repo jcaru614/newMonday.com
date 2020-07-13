@@ -1,7 +1,7 @@
 import express from 'express';
 import session from 'express-session';
 import bodyParser from "body-parser";
-import mongoose from "mongoose";
+import mongoose, { mongo } from "mongoose";
 import flash from 'connect-flash';
 import cors from "cors";
 import passport from 'passport';
@@ -20,7 +20,7 @@ require('dotenv').config();
 // Connect to MongoDB
 const mongoUrl = 'mongodb://localhost:27017/newMonday';
 
-mongoose.connect(mongoUrl, {
+mongoose.connect(process.env.MONGODB_URI || mongoUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
