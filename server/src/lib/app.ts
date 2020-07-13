@@ -70,8 +70,10 @@ app.use((req, res, next) => {
 app.use(express.static('public'));
 
 
-// // get an instance of router
-// const router = express.Router()
+// heroku
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static( 'client/build' ));
+}
 
 // Routes
 const routes = new Routes()

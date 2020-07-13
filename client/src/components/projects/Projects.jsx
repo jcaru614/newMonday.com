@@ -5,7 +5,8 @@ import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import DeleteSweepIcon from '@material-ui/icons/DeleteSweep';
 import axios from "axios";
 import AspectRatioIcon from '@material-ui/icons/AspectRatio';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+
+import FullscreenExitIcon from '@material-ui/icons/FullscreenExit';
 import Modal from './Modal'
 import { CSSTransition } from "react-transition-group";
 
@@ -156,7 +157,7 @@ const Projects = () => {
       >
         <Modal title={itemState.title} date={itemState.date} description={itemState.description} image={itemState.image} modalState={isModalVis}
           btn={
-            <button className="exiticon" onClick={(e) => toggleModal(e, itemState)}> <ExitToAppIcon fontSize="large"/></button>
+            <button className="exiticon" onClick={(e) => toggleModal(e, itemState)}> <FullscreenExitIcon fontSize="large"/></button>
           }
         />
       </CSSTransition>

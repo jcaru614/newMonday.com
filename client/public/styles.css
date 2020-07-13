@@ -39,10 +39,9 @@ h1 {
     font-weight: 700;
 }
 h2 {
-    padding: 10px;
-    font-size: 25px;
+    font-weight: 700;
 }
 p {
     font-weight: 700;
-    color: black;
 }
+

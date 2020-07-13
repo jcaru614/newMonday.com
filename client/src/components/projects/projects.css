@@ -74,10 +74,10 @@ tr {
 
 .iconNext:hover {
   color:  #AFD275;
-  transform: translateX(50px) ;
-    transition: all 1.5s linear;
-    -webkit-transition: all 1.5s linear;
-    -moz-transition: all 1.5s linear;
+  transform: translateX(20px) ;
+    transition: all 1.0s linear;
+    -webkit-transition: all 1.0s linear;
+    -moz-transition: all 1.0s linear;
 }
 
 .completeItem,
@@ -151,7 +151,8 @@ tr {
 .description {
     font-size: 1.3em;
     margin-bottom: 10px;
-    height: 150px;
+    height: 250px;
+    width: 100%;
     overflow: scroll;
     white-space: pre-wrap;
     word-wrap: break-word;
@@ -176,14 +177,6 @@ tr {
     -moz-transition: all 1.3s ease-in-out;
   }
 
-.vertical {
-    border-left: 60px solid green;
-    height: 500px;
-    /* position: absolute; */
-    /* left: 50%; */
-    margin-left: -3px;
-    top: 0;
-}
 
 .modalImg {
     width: 325px;

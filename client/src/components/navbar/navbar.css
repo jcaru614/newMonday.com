@@ -26,9 +26,9 @@ a {
     color: rgb(119,119,119);
     padding: 0px 20px;
 }
-
 a:hover {
-    transform: scale(1.2) !important;
+    color: rgb(137,137,221);
+    text-decoration: none;
 }
 
 /* fw */
@@ -41,23 +41,21 @@ a:hover {
     outline: none;
 }
 
-.fw-burger:active {
-    transform: scale(1.2);
+.fw-burger:hover {
+    transform: scale(1.1);
 }
 
 .fw-head {
-    grid-row-gap: 20px;
     padding: 30px 0;
     background: white;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     position: absolute;
-    right: 90px;
-    top: 75px;
-    width: 150px;
+    right: 0px;
+    top: 50px;
+    width: 100%;
     text-align: center;
-    display: grid;
-    border: 2px solid rgb(119,119,119);
+    border-bottom: 2px solid rgb(119,119,119);
 }
 
 
@@ -124,11 +122,11 @@ a:hover {
         position: absolute;
         right: 50px;
         top: 30px;
-        width: 100%;
         text-align: center;
         display: grid;
         z-index: 2;
         border-bottom: 2px solid rgb(119,119,119);
+        width: 100%;
     }
     .Animation-enter {
         opacity: 0;
