@@ -73,7 +73,7 @@ function AddProject() {
                 {errorState.project !== '' ? <p>{errorState.project}</p> : null}
                 <input className="input" type="date" name="date" onChange={onChangeHandler} />
                 {errorState.date !== '' ? <p>{errorState.date}</p> : null}
-                <input className="description" type="text" placeholder="Add a description" name="description" onChange={onChangeHandler} />
+                <textarea className="description" placeholder="Add a description" name="description" onChange={onChangeHandler} ></textarea>
                 {errorState.date !== '' ? <p>{errorState.date}</p> : null}
                 <input className="input" type="url" placeholder="Add an optional image" name="image" onChange={onChangeHandler} />
                 {errorState.date !== '' ? <p>{errorState.date}</p> : null}

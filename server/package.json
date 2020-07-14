@@ -2,19 +2,10 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node src/lib/server.ts",
-    "start:dev": "node dist/server.js",
-    "dev": "nodemon -x ts-node src/lib/server.ts",
-    "build": "cd client && npm run build",
-    "install-client": "cd client && npm install",
-    "heroku-postbuild": "npm run install-client && npm run build",
-    "client": "cd client && npm start",
-    "tsc": "tsc",
-    "postinstall": "npm run tsc"
-
+    "start": "nodemon -x ts-node src/lib/server.ts"
   },
   "keywords": [],
   "author": "",
@@ -60,8 +51,5 @@
     "nodemon": "^2.0.3",
     "ts-node": "^8.10.1",
     "typescript": "^3.8.3"
-  },
-  "engines": {
-    "node": "12.16.1"
   }
 }

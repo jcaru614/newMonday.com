@@ -20,7 +20,7 @@ require('dotenv').config();
 // Connect to MongoDB
 const mongoUrl = 'mongodb://localhost:27017/newMonday';
 
-mongoose.connect(process.env.MONGODB_URI || mongoUrl, {
+mongoose.connect(mongoUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
@@ -68,12 +68,6 @@ app.use((req, res, next) => {
 })
 // //serving static files 
 app.use(express.static('public'));
-
-
-// heroku
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static( 'client/build' ));
-}
 
 // Routes
 const routes = new Routes()

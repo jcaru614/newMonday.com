@@ -155,9 +155,9 @@ const Projects = () => {
         timeout={350}
         classNames="modal-animation" unmountOnExit 
       >
-        <Modal title={itemState.title} date={itemState.date} description={itemState.description} image={itemState.image} modalState={isModalVis}
+        <Modal title={itemState.title} date={itemState.date} description={itemState.description} position={itemState.position} image={itemState.image} modalState={isModalVis}
           btn={
-            <button className="exiticon" onClick={(e) => toggleModal(e, itemState)}> <FullscreenExitIcon fontSize="large"/></button>
+            <button className="exiticon" onClick={(e) => toggleModal(e, itemState)}> <FullscreenExitIcon style={{ fontSize: 50 }}/></button>
           }
         />
       </CSSTransition>
